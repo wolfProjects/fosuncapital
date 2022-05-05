@@ -1,0 +1,13 @@
+.page {
+    &-bd {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1420px;
+        margin: 0 auto;
+    }
+
+    &-aside {
+        width: 250px;
+        margin-right: 80px;
+    }
+}
