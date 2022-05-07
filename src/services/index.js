@@ -1,5 +1,9 @@
 import axios from 'axios';
 import Global from './Global';
+import Perspective from './Perspective';
+import Team from './Team';
+import Firm from './Firm';
+import Contact from './Contact';
 require('es6-promise').polyfill(); 
 
 // tools for maintain locale
@@ -23,5 +27,9 @@ const server = axios.create({
 
 export default {
     Global: Global(server),
+    Perspective: Perspective(server),
+    Team: Team(server),
+    Firm: Firm(server),
+    Contact: Contact(server),
     updateLocale
 };

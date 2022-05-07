@@ -2,12 +2,18 @@
     &-bd {
         display: flex;
         justify-content: space-between;
-        max-width: 1420px;
+        max-width: 1460px;
+        padding: 0 20px;
         margin: 0 auto;
     }
 
     &-aside {
+        flex: 0 0 auto;
         width: 250px;
         margin-right: 80px;
+    }
+
+    &-main {
+        flex: 1 1 auto;
     }
 }

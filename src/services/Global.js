@@ -7,16 +7,17 @@ const global = (server) => {
     });
 }
 
-export default global;
-
 const fetchNav = (axios) => _ => {
     return axios.get('navs', {
         params: {
-            populate: 'subMenus',
+            populate: [ 
+                'subMenus', 
+                'subMenus.banner' 
+            ],
             fields: [
                 'title',
                 'description',
-                'pagePath'
+                'pagePath',
             ]
         },
         paramsSerializer: params => qs.stringify(params, {
@@ -32,3 +33,5 @@ const fetchBanner = (axios) => _ => {
         }
     });
 };
+
+export default global;

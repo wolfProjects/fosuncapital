@@ -1,0 +1,145 @@
+.page-team {
+    .member-list {
+        display: flex;
+        flex-wrap: wrap;
+
+        &-item {
+            position: relative;
+            flex: 0 0 33.33333%;
+            padding: 0 10px 20px 10px;
+            cursor: pointer;
+        }
+
+        &-item:hover {
+            .member-list-item-bd {
+                opacity: 1;
+            }
+        }
+
+        &-item-avatar {
+            padding-top: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        &-item-bd {
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            right: 10px;
+            padding: 20px;
+            min-height: 152px;
+            background-color: rgba(255,255,255,.9);
+            transition: .25s all;
+
+            &::before {
+                position: absolute;
+                right: 20px;
+                top: 13px;
+                display: block;
+                content: '';
+                width: 36px;
+                height: 36px;
+                background: url('~@/assets/images/icon-right.png') no-repeat;
+                background-size: cover;
+            }
+        }
+        
+        &-item-name {
+            line-height: 1em;
+            margin-bottom: 14px;
+            font-size: 18px;
+            color: #94673D;
+
+        }
+
+        &-item-titles {
+            line-height: 26px;
+            font-size: 16px;
+            color: #1B1817;
+            white-space: pre-line;
+        }
+
+    }
+
+    .member-detail-dialog {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9999;
+
+        &-mask {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            animation: fadeIn 1s ease;
+        }
+
+        &-close {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            padding: 20px;
+        }
+    }
+
+    .member-detail {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        width: 1060px;
+        padding-bottom: 60px;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        animation: fadeIn 0.75s ease;
+
+        &-summary {
+            flex: 0 0 340px;
+        }
+
+        &-details {
+            flex: 1 1 auto;
+            line-height: 1.57em;
+            padding: 60px 30px;
+            font-size: 14px;
+            color: #6D6C6B;
+            white-space: pre-line;
+        }
+
+        &-avatar {
+            display: block;
+            width: 100%;
+            margin-bottom: 60px;
+        }
+
+        &-name {
+            line-height: 1em;
+            padding-left: 10px;
+            margin: 0 0 20px 30px;
+            font-size: 24px;
+            color: #94673D;
+            border-left: 6px solid #94673D;
+        }
+
+        &-titles {
+            line-height: 1.625;
+            margin-left: 30px;
+            font-size: 16px;
+            color: #1B1817;
+            white-space: pre-line;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

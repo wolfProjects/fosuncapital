@@ -1,0 +1,103 @@
+.chuangfu-values {
+    padding: 30px;
+    background: #fff;
+
+    &-bd {
+        padding-top: 50px;
+        margin-top: 60px;
+        border-top: 1px solid #E3E3E3;
+    }
+}
+
+.founder-speaking {
+    &-hd {
+        line-height: 1em;
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+
+    &-bd {
+        display: flex;
+    }
+
+    &-avatar {
+        flex: 0 0 220px;
+        width: 220px;
+        background-color: gray;
+    }
+
+    &-list {
+        display: flex;
+        flex: 1 1 auto;
+        margin-left: 30px;
+    }
+
+    &-list-item {
+        flex: 1 1 33.333%;
+        margin-right: 60px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        .sub-title {
+            display: block;
+            line-height: 1em;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1B1817;
+        }
+
+        .main-title {
+            position: relative;
+            line-height: 1em;
+            margin-bottom: 42px;
+            font-size: 24px;
+            color: #94673D;
+
+            &::before {
+                position: absolute;
+                left: 0;
+                bottom: -22px;
+                content: '';
+                width: 36px;
+                height: 2px;
+                background: #94673D;
+            }
+        }
+
+        .content {
+            font-size: 14px;
+            color: #6D6C6B;
+        }
+    }
+}
+
+.chuangfu-values-slogan {
+    &-main {
+        line-height: 1em;
+        margin-bottom: 12px;
+        font-size: 24px;
+        color: #94673D;
+    }
+
+    &-sub {
+        display: block;
+        line-height: 16px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #1B1817;
+    }
+
+    &-content {
+        font-size: 14px;
+        color: #6D6C6B;
+    }
+
+    &-founder-signature {
+        text-align: right;
+        // font-size: 0;
+    }
+}

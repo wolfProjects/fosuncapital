@@ -1,15 +1,20 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './index.scss';
 import menuData from '@/Data/menu';
 
-const Page = () => {
+const SubMenu = (props) => {
     const pathName = useLocation().pathname;
     const [ menu ] = useState(menuData.getSubMenu(pathName));
-    let pathNameGroup = pathName.split('/').filter(i => i.length);
-    let currentSelectedSubMenuItem = pathNameGroup[pathNameGroup.length - 1] != menu.pagePath ? 
-    pathNameGroup[pathNameGroup.length - 1] : menu.subMenus[0].id;
+    //  via userMatch hooks
+    let pathNames = pathName.split('/').filter(i => i.length);
+    let currentSelectedSubMenuItem = pathNames[pathNames.length - 1] != menu.pagePath ? 
+        pathNames[pathNames.length - 1] : menu.subMenus[0].id;
+
+    useEffect(() => {
+        props.onCurrentSelectedSubMenuIDChanged && props.onCurrentSelectedSubMenuIDChanged(currentSelectedSubMenuItem, menu.subMenus.find(i => i.id == currentSelectedSubMenuItem));
+    }, [currentSelectedSubMenuItem]);
 
     return (
         <div className="submenu">
@@ -30,4 +35,4 @@ const Page = () => {
     );
 }
 
-export default Page;
+export default React.memo(SubMenu);

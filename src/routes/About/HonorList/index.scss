@@ -1,0 +1,102 @@
+.honor-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    &-item {
+        position: relative;
+        flex: 0 0 50%;
+    }
+
+    &-item:nth-child(odd) {
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            border-left: 1px solid #E2E2E2;
+        }
+        
+        .honor {
+            margin-left: 0;
+
+            &-index {
+                top: 0;
+                right: -50px;
+                border-radius: 0px 100px 100px 0px;
+
+                &-point {
+                    top: 3px;
+                    right: 3px;
+                }
+            }
+        }
+    }
+
+    &-item:nth-child(even) {
+        .honor {
+            margin-right: 0;
+
+            &-index {
+                left: -50px;
+                bottom: 20px;
+                border-radius: 100px 0px 0px 100px;
+
+                &-point {
+                    right: initial;
+                    top: 3px;
+                    left: 3px;
+                }
+            }
+        }
+    }
+}
+
+.honor {
+    position: relative;
+    padding: 20px;
+    margin: 0 40px 40px 40px;
+    background: #fff;
+
+    &-index {
+        position: absolute;
+        width: 50px;
+        height: 20px;
+        background: #fff;
+
+        &-point {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background: #94673D;
+            border-radius: 100%;
+        }
+    }
+
+    &-hd {
+        line-height: 1em;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #E2E2E2;
+        font-size: 24px;
+    }
+
+    &-item {
+        position: relative;
+        line-height: 1.428em;
+        padding-left: 18px;
+        margin-top: 20px;
+        font-size: 14px;
+        color: #6D6C6B;
+
+        &::before {
+            position: absolute;
+            top: 7px;
+            left: 0;
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #94673D;
+            border-radius: 100%;
+        }
+    }
+}
