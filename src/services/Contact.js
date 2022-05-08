@@ -9,6 +9,9 @@ const contact = (server) => {
 const fetchJobList = (axios) => _ => {
     return axios.get('job-lists', {
         params: {
+            pagination: {
+                pageSize: 999,
+            },
             populate: ['hrEmail']
         },
         paramsSerializer: params => qs.stringify(params, {

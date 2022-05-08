@@ -16,6 +16,9 @@ const fetchMemberList = (axios) => subMenuID => {
                     }
                 }
             },
+            pagination: {
+                pageSize: 999,
+            },
             populate: ['avatar']
         },
         paramsSerializer: params => qs.stringify(params, {

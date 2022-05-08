@@ -1,46 +1,77 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './index.scss';
+import menuData from '@/Data/menu';
+import classNames from 'classnames';
 
-class Page extends React.PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuList: [
-                { title: '创富', path: '/about' },
-                { title: '视角', path: '/perspective' },
-                { title: '企业', path: '/firm' },
-                { title: '团队', path: '/team' },
-                { title: '沟通', path: '/contact' },
-            ]
-        };
-    }
-
-    render() {
-        let { menuList } = this.state;
-
-        return (
-            <div className="header">
+const Page = () => {
+    return (
+        <div className="header">
+            <div className="header-bd">
                 <Link className="header-logo" to="/" />
 
                 <div className="header-side">
-                    <div className="header-language-selector"></div>
-                    <div className="header-menu">
-                        <div className="header-menu-hd"></div>
-                        <div className="header-menu-bd">
+                    <div className="language-selector">
+                        <div className="language-selector-hd">
+                            简体中文
+                        </div>
+                        <div className="language-selector-bd">
+
+                        </div>
+                    </div>
+                    <HeaderMenu />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+const HeaderMenu = (props) => {
+    let [ showHeaderMenu, updateShowHeaderMenu ] = useState(false);
+
+    //  keyboard shotcut: close header menu
+    useEffect(() => {
+        const closeHeaderMenu = (e) => {
+            if (e.keyCode !== 27 || showHeaderMenu) return;
+            updateShowHeaderMenu(false);
+        };
+        document.addEventListener('keydown', closeHeaderMenu);
+        return () => document.removeEventListener('keydown', closeHeaderMenu);
+    }, []);
+
+    //  detect current selected menu
+    const pathNames = useLocation().pathname.split('/').filter(i => i.length);
+    let currentSelectedMenu = pathNames.shift();
+    const menuList = menuData.getNav();
+
+    return (
+        <div className="header-menu">
+            <div className="header-menu-hd" onClick={() => updateShowHeaderMenu(!showHeaderMenu)}></div>
+            {
+                showHeaderMenu && (
+                    <div className="header-menu-bd">
+                        <div className="hd">
+                            <div className="logo"></div>
+                            <div className="close"  onClick={() => updateShowHeaderMenu(!showHeaderMenu)}>X</div>
+                        </div>
+                        <div className="bd">
                             {
                                 menuList.map((item, key) => (
-                                    <div className="header-menu-item" key={key}>
-                                        <Link to={item.path}>{ item.title }</Link>
-                                    </div>
+                                    <Link 
+                                        className={classNames("header-menu-item", { active: currentSelectedMenu === item.pagePath})} 
+                                        key={key} 
+                                        to={`/${item.pagePath}`}
+                                    >
+                                        { item.title }
+                                    </Link>
                                 ))
                             }
                         </div>
                     </div>
-                </div>
-            </div>
-        );
-    }
-}
+                )
+            }
+        </div>
+    );
+};
 
 export default Page;

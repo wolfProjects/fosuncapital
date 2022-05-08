@@ -7,7 +7,6 @@ const uiText = {
 
 const Jobs = (props={}) => {
     let [ currentJob, updateCurrentJob ] = useState(null);
-    console.log(currentJob)
     return (
         <div className="jobs">
             <div className="job-list">{

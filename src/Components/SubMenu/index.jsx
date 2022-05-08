@@ -7,7 +7,6 @@ import menuData from '@/Data/menu';
 const SubMenu = (props) => {
     const pathName = useLocation().pathname;
     const [ menu ] = useState(menuData.getSubMenu(pathName));
-    //  via userMatch hooks
     let pathNames = pathName.split('/').filter(i => i.length);
     let currentSelectedSubMenuItem = pathNames[pathNames.length - 1] != menu.pagePath ? 
         pathNames[pathNames.length - 1] : menu.subMenus[0].id;

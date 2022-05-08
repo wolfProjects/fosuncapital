@@ -1,0 +1,43 @@
+.home-welcome {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #17181B;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &-bd {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+    }
+
+    .title {
+        line-height: 1em;
+        margin-bottom: 40px;
+        font-size: 60px;
+        font-weight: normal;
+        text-align: center;
+        white-space: pre-line;
+    }
+
+    .content {
+        line-height: 1.666em;
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    &-scroll-tips {
+        position: absolute;
+        bottom: 120px;
+        left: 50%;
+        width: 22px;
+        height: 70px;
+        background: #fff;
+        user-select: none;
+    }
+}

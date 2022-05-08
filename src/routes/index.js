@@ -7,6 +7,7 @@ import Team from './Team';
 import Perspective from './Perspective';
 import Firm from './Firm';
 import Contact from './Contact';
+import ArticleDetail from './ArticleDetail';
 
 export default () => {
     return (
@@ -23,6 +24,7 @@ export default () => {
                 <Route path="/firm/:id" element={<Firm />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/contact/:id" element={<Contact />} />
+                <Route path="/article-detail/:id" element={<ArticleDetail />} />
             </Routes>
         </Router>
     );
