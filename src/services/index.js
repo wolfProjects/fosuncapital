@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { setupCache } from 'axios-cache-adapter'
 import Global from './Global';
 import Home from './Home';
 import Perspective from './Perspective';
@@ -7,14 +6,6 @@ import Team from './Team';
 import Firm from './Firm';
 import Contact from './Contact';
 require('es6-promise').polyfill(); 
-
-// create `axios-cache-adapter` instance
-const cache = setupCache({
-    maxAge: 15 * 60 * 1000,
-    exclude: {
-        query: false,
-    }
-})
 
 // tools for maintain locale
 const getDefaultLocale = () => {
@@ -33,7 +24,6 @@ const server = axios.create({
     params: {
         locale: getDefaultLocale(),
     },
-    adapter: cache.adapter
 });
 
 export default {
