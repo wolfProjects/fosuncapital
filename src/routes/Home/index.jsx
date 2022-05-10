@@ -9,9 +9,13 @@ const uiText = {
     content: '复星创富自2007年成立至今,\n十五年来发起并管理的资产包括母基金、私募股权投资基金、上市公司产业基金及其它各类股权投资基金'
 };
 
-const Page = () => {
+const Page = (props) => {
     let [ showHomePage, updateShowHomePage ] = useState(false);
+
+    useEffect(() => props.updateHeaderStyle(1), []);
+    
     const whenWheeled = useCallback(() => {
+        props.updateHeaderStyle(2);
         updateShowHomePage(true);
     }, []);
 
@@ -19,7 +23,7 @@ const Page = () => {
     useEffect((currentSelectedSubMenuId) => {
         services.Home.fetchTab(currentSelectedSubMenuId).then(res => {
             updateTabs(res.data.data);
-        })
+        });
     }, []);
 
     return (    

@@ -97,7 +97,14 @@
     }
 
     &-founder-signature {
-        text-align: right;
-        // font-size: 0;
+        display: flex;
+        justify-content: flex-end;
+        
+        .bd {
+            width: 92px;
+            height: 48px;
+            background: url('~@/assets/images/values-ceo-signature.png') no-repeat;
+            background-size: cover;
+        }
     }
 }

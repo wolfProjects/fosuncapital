@@ -5,6 +5,7 @@
 }
 
 body {
+  overflow-x: hidden;
   line-height: 1.571em;
   padding-bottom: 60px;
   font-family: "PingFangSC-Regular", "PingFang SC", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;

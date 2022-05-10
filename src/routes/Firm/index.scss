@@ -36,7 +36,7 @@
             min-height: 152px;
             color: #fff;
             background-color: #94673D;
-            transition: .25s all;
+            transition: .35s all;
 
             &::before {
                 position: absolute;
@@ -58,16 +58,39 @@
 
         }
 
-        &-item-summary {
-            line-height: 1.571em;
+        &-item-description {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            $lineHeight: 1.571em;
+            max-height: $lineHeight * 6;
+            line-height: $lineHeight;
             font-size: 14px;
             white-space: pre-line;
         }
         
         &-item-link {
+            position: relative;
             font-size: 16px;
             padding-top: 30px;
             border-top: 1px solid #fff;
+
         }
+        
+        .link {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-right: 80px;
+        }
+
+        .go {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            width: 36px;
+            height: 36px;
+            background: url('~@/assets/images/icon-right-normal.png') no-repeat;
+        }
+        
     }
 }

@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import './index.scss';
 import Layout from "@/Hoc/Layout";
 import services from '@/services';
+import ReactMarkdown from 'react-markdown';
+import tools from '@/libs/tools';
 
 const Page = () => {
     let [ articleDetail, updateArticleDetail ] = useState(null);
@@ -15,8 +17,6 @@ const Page = () => {
         })
     }, []);
 
-    console.log(articleDetail);
-
     return (
         <React.Fragment>
             {
@@ -24,9 +24,16 @@ const Page = () => {
                 <div className="article-detail">
                     <div className="article-detail-hd">
                         <h1 className="article-title">{ articleDetail.attributes.title }</h1>
-                        <small className="article-date">{ articleDetail.attributes.publishedAt }</small>
+                        <small className="article-date">{ tools.showDate(articleDetail.attributes.publishedAt) }</small>
                     </div>
-                    <div className="article-detail-bd">{ articleDetail.attributes.content }</div>
+                    <div className="article-detail-bd">
+                        <ReactMarkdown 
+                            children={ articleDetail.attributes.content } 
+                            components={{
+                                img: ({node, ...props}) => <span className="article-image"><img {...props} /></span>
+                            }} 
+                        />
+                    </div>
                 </div>
             }
         </React.Fragment>

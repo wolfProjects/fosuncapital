@@ -21,7 +21,7 @@ const fetchArticleList = (axios) => subMenuID => {
             pagination: {
                 pageSize: 999,
             },
-            populate: ['thumb', 'avatar']
+            populate: ['thumb', 'author', 'author.avatar']
         },
         paramsSerializer: params => qs.stringify(params, {
             encodeValuesOnly: true,

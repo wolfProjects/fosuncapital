@@ -2,10 +2,12 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './index.scss';
+import { Link } from 'react-router-dom';
+import tools from '@/libs/tools';
 
 const PerspectiveList = (props) => {
     let { articleList } = props;
-    
+
     return (
         <div className="perspective-list">
             <Swiper
@@ -16,18 +18,18 @@ const PerspectiveList = (props) => {
                 {
                     articleList.data.map((article, index) => (
                         <SwiperSlide key={index}>
-                            <div className="perspective-list-item">
-                                <div className="perspective-hd" style={{ backgroundImage: `url('${article.attributes.avatar.data.attributes.url}')` }}></div>
+                            <Link className="perspective-list-item" to={`/article-detail/${article.id}`} target="_blank">
+                                <div className="perspective-hd" style={{ backgroundImage: `url('${article?.attributes?.author?.data?.attributes?.avatar?.data?.attributes?.url}')` }}></div>
                                 <div className="perspective-bd">
-                                    <p className="perspective-date">{ article.attributes.publishedAt }</p>
+                                    <p className="perspective-date">{ tools.showDate(article.attributes.publishedAt) }</p>
                                     <h2 className="perspective-title">{ article.attributes.title }</h2>
                                     <p className="perspective-summary">{ article.attributes.summary }</p>
                                     <div className="perspective-title-info">
-                                        <p className="perspective-title-info-name">{ article.attributes.author }</p>
-                                        <small className="perspective-title-info-title">{ article.attributes.authorTitle }</small>
+                                        <p className="perspective-title-info-name">{ article?.attributes?.author?.data?.attributes?.name }</p>
+                                        <small className="perspective-title-info-title">{ article?.attributes?.author?.data?.attributes?.title }</small>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     ))
                 }

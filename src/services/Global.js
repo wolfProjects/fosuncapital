@@ -3,7 +3,7 @@ import qs from 'qs';
 const global = (server) => {
     return ({
         fetchNav: fetchNav(server),
-        fetchBanner: fetchBanner(server),
+        fetchUII18n: fetchUII18n(server),
     });
 }
 
@@ -26,10 +26,9 @@ const fetchNav = (axios) => _ => {
     });
 };
 
-const fetchBanner = (axios) => _ => {
-    return axios.get('shijiao-chuangfuhui-banner', {
+const fetchUII18n = (axios) => _ => {
+    return axios.get('ui-i18n', {
         params: {
-            populate: 'banner'
         }
     });
 };

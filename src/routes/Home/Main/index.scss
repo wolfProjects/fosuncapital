@@ -67,16 +67,23 @@
             &-more {
                 display: inline-block;
                 line-height: 54px;
-                padding: 0 60px 0 30px;
-                font-size: 16px;
+                padding: 0 62px 0 30px;
+                font-size: 18px;
                 color: #94673D;
                 background: #fff;
                 border: 2px solid #94673D;
                 border-radius: 54px;
-                background: #fff url('~@/assets/images/icon-right2.png') no-repeat;
+                background: #fff url('~@/assets/images/icon-right-small.png') no-repeat;
                 background-position: right 32px center;
-                background-size: 9px 14px;
+                background-size: 16 16px;
                 cursor: pointer;
+                transition: all .25s ease;
+
+                &:hover {
+                    color: #fff;
+                    background-image: url('~@/assets/images/icon-right-small-active.png');
+                    background-color: #94673D;
+                }
             }
         }
     }
@@ -89,8 +96,8 @@
         display: flex;
 
         &-item {
-            width: 54px;
-            height: 54px;
+            width: 64px;
+            height: 64px;
             background-color: #f4f4f4;
             background-size: 10px 16px;
             background-position: center center;
@@ -105,13 +112,13 @@
         }
 
         .pre {
-            background-image: url('~@/assets/images/icon-right3.png');
-            border-radius: 54px 0 0 54px;
+            background-image: url('~@/assets/images/icon-left-big.png');
+            border-radius: 64px 0 0 64px;
         }
         
         .next {
-            background-image: url('~@/assets/images/icon-right2.png');
-            border-radius: 0 54px 54px 0;
+            background-image: url('~@/assets/images/icon-right-big.png');
+            border-radius: 0 64px 64px 0;
         }
     }
 }

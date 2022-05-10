@@ -3,7 +3,7 @@
         display: flex;
         justify-content: space-between;
         max-width: 1460px;
-        padding: 120px 20px 0 20px;
+        padding: 200px 20px 0 20px;
         margin: 0 auto;
     }
 
@@ -16,4 +16,16 @@
     &-main {
         flex: 1 1 auto;
     }
+
+    .fade-in {
+        opacity: 0;
+        animation: pageFadeIn .65s ease forwards;
+    }
 }
+
+@keyframes pageFadeIn {
+    100% {
+        opacity: 1;
+    }
+}
+

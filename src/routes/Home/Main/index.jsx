@@ -38,8 +38,8 @@ const Page = (props) => {
             </div>
             <div className="main"></div>
             <div className="pagination">
-                <button className="pagination-item pre" onClick={() => setCurrentIndex(currentIndex > 0 ? currentIndex - 1 : tabs.length - 1)} />
-                <button className="pagination-item next" onClick={() => setCurrentIndex(currentIndex + 1 <= tabs.length - 1 ? currentIndex + 1 : 0)} />
+                <button className="pagination-item pre" onClick={() => setCurrentIndex(currentIndex - 1 + tabs.length) % tabs.length} />
+                <button className="pagination-item next" onClick={() => setCurrentIndex((currentIndex + 1) % tabs.length)} />
             </div>
         </div>
     );

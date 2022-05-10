@@ -8,6 +8,10 @@
         padding: 35px 0;
         border-bottom: 1px solid #E2E2E2;
 
+        &:hover &-title {
+            color: #94673D;
+        }
+
         &-main {
             flex: 1 1 auto;
         }
@@ -43,6 +47,7 @@
         &-title {
             font-size: 18px;
             margin-bottom: 9px;
+            transition: all .25s ease;
         }
 
         &-summary {

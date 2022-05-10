@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './index.scss';
-
-const uiText = {
-    email: '投递邮箱'
-}
+import uiData from '@/Data/i18n';
 
 const Jobs = (props={}) => {
     let [ currentJob, updateCurrentJob ] = useState(null);
+    let { email } = uiData.getUiI18n().contact.jobs;
+
     return (
         <div className="jobs">
             <div className="job-list">{
@@ -25,13 +24,13 @@ const Jobs = (props={}) => {
                         <div className="job-detail-dialog-mask" onClick={() => updateCurrentJob(null)}></div>
                         <div className="job-detail">
                             <div className="job-detail-hd">
-                                <div className="job-detail-dialog-close" onClick={() => updateCurrentJob(null)}>关闭按钮，需要补图</div>
+                                <div className="job-detail-dialog-close" onClick={() => updateCurrentJob(null)}></div>
                                 <h3>{ currentJob.attributes.title }</h3>
                             </div>
                             <div className="job-detail-bd">
                                 <p className="job-detail-description">{ currentJob.attributes.jobDescription }</p>
                                 <div className="row">
-                                    <div className="row-title">{uiText.email}</div>
+                                    <div className="row-title">{email}</div>
                                     <a className="row-description" href={`emailTo:${ currentJob.attributes.hrEmail.data.attributes.email }`}>{ currentJob.attributes.hrEmail.data.attributes.email }</a>
                                 </div>
                             </div>

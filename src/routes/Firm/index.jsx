@@ -30,13 +30,18 @@ const Page = () => {
                                 <div className="firm-list-item-bd">
                                     <div className="firm-list-item-meta">
                                         <h3 className="firm-list-item-name">{firm.attributes.name}</h3>
-                                        <div className="firm-list-item-summary">{firm.attributes.description}</div>
+                                        <div className="firm-list-item-description">{firm.attributes.description}</div>
                                     </div>
-                                    <div className="firm-list-item-link">
-                                        <p>官网</p>
-                                        <p>{firm.attributes.website && firm.attributes.website.substring(0, 22)}..</p>
-                                        <small>【缺右箭头】</small>
-                                    </div>
+                                    {
+                                        firm.attributes.website && (
+                                            <div className="firm-list-item-link">
+                                                <p>官网</p>
+                                                <p className="link">{firm.attributes.website}</p>
+                                                <small className="go"></small>
+                                            </div>
+                                        )
+                                    }
+                                    
                                 </div>
                             </div>
                         ))
