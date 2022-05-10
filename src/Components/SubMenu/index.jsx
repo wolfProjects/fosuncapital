@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './index.scss';
 import menuData from '@/Data/menu';
+import { motion } from 'framer-motion';
 
 const SubMenu = (props) => {
     const pathName = useLocation().pathname;
@@ -16,7 +17,13 @@ const SubMenu = (props) => {
     }, [currentSelectedSubMenuItem]);
 
     return (
-        <div className="submenu">
+        <motion.div 
+            className="submenu"
+            initial={{ opacity: 0, transform: 'translateY(10px)' }}
+            animate={{ opacity: 1, transform: 'translateY(0px)' }}
+            exit={{ opacity: 0, transform: 'translateX(10px)' }}
+            transition={{ duration: 1 }}
+        >
             <div className="submenu-hd">
                 <h2 className="submenu-title">{ menu.title }</h2>
                 <p className="submenu-description">{ menu.description }</p>
@@ -30,7 +37,7 @@ const SubMenu = (props) => {
                     ))
                 }
             </div>
-        </div>
+        </motion.div>
     );
 }
 

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const uiText = {
     more: '了解更多'
@@ -14,7 +15,13 @@ const Page = (props) => {
 
     return (
         <div className="page-home-main">
-            <div className="side">
+            <motion.div 
+                className="side"
+                initial={{ x: '-100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '-100%' }}
+                transition={{ duration: .65 }}
+            >
                 <div className="tabs">
                     <div className="tabs-hd">
                         {
@@ -35,8 +42,14 @@ const Page = (props) => {
                         )
                     }
                 </div>
-            </div>
-            <div className="main"></div>
+            </motion.div>
+            <motion.div 
+                className="main"
+                initial={{ x: '100%' }}
+                animate={{ x: 0 }}
+                exit={{ x: '100%' }}
+                transition={{ duration: .65 }}
+            ></motion.div>
             <div className="pagination">
                 <button className="pagination-item pre" onClick={() => setCurrentIndex(currentIndex - 1 + tabs.length) % tabs.length} />
                 <button className="pagination-item next" onClick={() => setCurrentIndex((currentIndex + 1) % tabs.length)} />

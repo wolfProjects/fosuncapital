@@ -3,6 +3,7 @@ import './index.scss';
 import Layout from "@/Hoc/Layout";
 import Main from './Main';
 import services from '@/services';
+import { motion } from 'framer-motion';
 
 const uiText = {
     title: '汇聚成长力量',
@@ -48,8 +49,24 @@ const HomeWelcome = (props) => {
     return (
         <div className="home-welcome">
             <div className="home-welcome-bd">
-                <h1 className="title">{props.title}</h1>
-                <p className="content">{props.content}</p>
+                <motion.h1 
+                    className="title"
+                    initial={{ opacity: 0, transform: 'translateY(10px)' }}
+                    animate={{ opacity: 1, transform: 'translateY(0px)' }}
+                    exit={{ opacity: 0, transform: 'translateX(10px)' }}
+                    transition={{ duration: 1 }}
+                >
+                    {props.title}
+                </motion.h1>
+                <motion.p 
+                    className="content"
+                    initial={{ opacity: 0, transform: 'translateY(10px)' }}
+                    animate={{ opacity: 1, transform: 'translateY(0px)' }}
+                    exit={{ opacity: 0, transform: 'translateX(10px)' }}
+                    transition={{ duration: 1, delay: .25 }}
+                >
+                    {props.content}
+                </motion.p>
             </div>
 
             <span className="home-welcome-scroll-tips"></span>

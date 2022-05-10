@@ -1,12 +1,19 @@
 import React from 'react';
 import './index.scss';
 import uiData from '@/Data/i18n';
+import { motion } from 'framer-motion';
 
 const ChuangfuValues = () => {
     let { speakingTitle, speakings, slogan } = uiData.getUiI18n().chuangfu.chuangfuValues;
 
     return (
-        <div className="chuangfu-values">
+        <motion.div 
+            className="chuangfu-values"
+            initial={{ opacity: 0, transform: 'translateX(20px)' }}
+            animate={{ opacity: 1, transform: 'translateX(0px)' }}
+            exit={{ opacity: 0, transform: 'translateX(20px)' }}
+            transition={{ duration: .65 }}
+        >
             <div className="chuangfu-values-hd">
                 <div className="founder-speaking">
                     <div className="founder-speaking-hd">{ speakingTitle }</div>
@@ -38,7 +45,7 @@ const ChuangfuValues = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
