@@ -1,5 +1,11 @@
 const json = {
     'zh-Hans': {
+        "home": {
+            "welcome": {
+                "title": "汇聚成长力量",
+                "content": "复星创富自2007年成立至今,\n十五年来发起并管理的资产包括母基金、私募股权投资基金、上市公司产业基金及其它各类股权投资基金"
+            }
+        },
         "chuangfu": {
             "chuangfuValues": {
                 "speakingTitle": "创始人致辞",
@@ -161,6 +167,6 @@ const json = {
     'en': {
 
     }
-};
+}
 
 export default json;

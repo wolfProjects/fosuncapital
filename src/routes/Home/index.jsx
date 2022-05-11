@@ -3,13 +3,11 @@ import './index.scss';
 import Layout from "@/Hoc/Layout";
 import Main from './Main';
 import services from '@/services';
-
-const uiText = {
-    title: '汇聚成长力量',
-    content: '复星创富自2007年成立至今,\n十五年来发起并管理的资产包括母基金、私募股权投资基金、上市公司产业基金及其它各类股权投资基金'
-};
+import uiData from '@/Data/i18n';
 
 const Page = (props) => {
+    let { welcome } = uiData.getUiI18n().home;
+
     let [ showHomePage, updateShowHomePage ] = useState(false);
 
     useEffect(() => props.updateHeaderStyle(1), []);
@@ -30,7 +28,7 @@ const Page = (props) => {
         <React.Fragment>
             {
                 !showHomePage ? 
-                    <HomeWelcome title={uiText.title} content={uiText.content} whenWheeled={whenWheeled} /> :
+                    <HomeWelcome title={welcome.title} content={welcome.content} whenWheeled={whenWheeled} /> :
                     <Main tabs={tabs}/>
             }
         </React.Fragment>
