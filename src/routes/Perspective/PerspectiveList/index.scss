@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .perspective {
     &-list {
         max-width: 1090px;
@@ -88,4 +90,28 @@
   
 .swiper-slide {
     width: 340px;
+}
+
+.mobile-only {
+    display: none;
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .not-mobile {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .perspective-list-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .perspective-title {
+        font-weight: normal;
+    }
 }

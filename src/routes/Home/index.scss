@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .home-welcome {
     position: fixed;
     top: 0;
@@ -39,5 +41,26 @@
         height: 70px;
         background: #fff;
         user-select: none;
+    }
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .home-welcome {
+        &-bd {
+            left: 0;
+            right: 0;
+            padding: 0 30px;
+            transform: translate(0, -50%);
+        }
+
+        .title {
+            margin-bottom: 19px;
+            font-size: 30px;
+        }
+
+        .content {
+            font-size: 14px;
+        }
     }
 }

@@ -2,12 +2,12 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   overflow-x: hidden;
   line-height: 1.571em;
-  padding-bottom: 60px;
   font-family: "PingFangSC-Regular", "PingFang SC", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 106.25%;
   color: #17181B;

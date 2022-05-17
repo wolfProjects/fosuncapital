@@ -8,7 +8,7 @@ import uiData from '@/Data/i18n';
 const Page = (props) => {
     let { welcome } = uiData.getUiI18n().home;
 
-    let [ showHomePage, updateShowHomePage ] = useState(false);
+    let [ showHomePage, updateShowHomePage ] = useState(true);
 
     useEffect(() => props.updateHeaderStyle(1), []);
     

@@ -12,7 +12,7 @@ const Jobs = (props={}) => {
                 props.list.map((job, index) => (
                     <div className="job-list-item" key={index} onClick={() => updateCurrentJob(job)}>
                         <div className="job-list-item-title">{job.attributes.title}</div>
-                        <div className="job-list-item-more">{props.uiText.details} &gt;</div>
+                        <div className="job-list-item-more"><span>{props.uiText.details}</span>&nbsp;</div>
                     </div>
                 ))
             }

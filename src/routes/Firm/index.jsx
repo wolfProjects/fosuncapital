@@ -13,6 +13,8 @@ const Page = () => {
         updateFirmList(firmList.data);
     }, []);
 
+    let [ currentFirm, updateCurrentFirm ] = useState(null);
+
     return (
         <React.Fragment>
             <aside className="page-aside">
@@ -23,7 +25,7 @@ const Page = () => {
                 {
                     firmList.data && (
                         firmList.data.map(firm => (
-                            <div className="firm-list-item" key={firm.id} onClick={() => tools.openNewPage(firm.attributes.website) }>
+                            <div className="firm-list-item" key={firm.id} onClick={() => updateCurrentFirm(firm) }>
                                 <div className="firm-list-item-hd">
                                     <div className="firm-list-item-thumb" style={{ backgroundImage: `url('${firm.attributes.thumb.data.attributes.url}')`}}></div>
                                 </div>
@@ -37,7 +39,7 @@ const Page = () => {
                                             <div className="firm-list-item-link">
                                                 <p>官网</p>
                                                 <p className="link">{firm.attributes.website}</p>
-                                                <small className="go"></small>
+                                                <small className="go" onClick={(e) => { e.stopPropagation(); tools.openNewPage(firm.attributes.website) } }></small>
                                             </div>
                                         )
                                     }
@@ -48,6 +50,28 @@ const Page = () => {
                     )
                 }
                 </div>
+
+                { currentFirm && (
+                    <div className="firm-info-dialog">
+                        <div className="firm-info-dialog-mask" onClick={_ => updateCurrentFirm(null)}></div>
+                        <div className="firm-info-dialog-bd">
+                            <span className="firm-info-dialog-close" onClick={() => updateCurrentFirm(null)}></span>
+                            <div className="firm-info-dialog-meta">
+                                <h3 className="firm-info-dialog-name">{currentFirm.attributes.name}</h3>
+                                <div className="firm-info-dialog-description">{currentFirm.attributes.description}</div>
+                            </div>
+                            {
+                                currentFirm.attributes.website && (
+                                    <div className="firm-info-dialog-link">
+                                        <p>官网</p>
+                                        <p className="link">{currentFirm.attributes.website}</p>
+                                        <small className="go" onClick={(e) => { e.stopPropagation(); tools.openNewPage(currentFirm.attributes.website) } }></small>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                ) }
             </main>
         </React.Fragment>
     );

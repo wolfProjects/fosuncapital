@@ -8,9 +8,11 @@ const ArticleList = (props) => {
     
     return (
         <div className="article-list">
-            <div className="article-list-hd">
-                { banner && <div className="banner" style={{ backgroundImage: `url('${banner}')` }}></div> }
-            </div>
+            { banner && 
+                <div className="article-list-hd">
+                    <div className="banner" style={{ backgroundImage: `url('${banner}')` }}></div>
+                </div> 
+            }
             <div className="article-list-bd">
                 {
                     articleList.data && articleList.data.map((article) => (
@@ -20,7 +22,7 @@ const ArticleList = (props) => {
                                 <h3 className="article-list-item-title">{ article.attributes.title }</h3>
                                 <p className="article-list-item-summary">{ article.attributes.summary && article.attributes.summary.trim() }</p>
                             </div>
-                            <div className="article-list-item-thumb"><img src={article.attributes?.thumb?.data?.attributes?.url}/></div>
+                            <div className="article-list-item-thumb" style={{ backgroundImage: `url('${article.attributes?.thumb?.data?.attributes?.url}')`}}></div>
                         </Link>
                     ))
                 }

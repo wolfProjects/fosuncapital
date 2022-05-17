@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .contact {
     overflow: hidden;
     padding: 30px 30px 40px 30px;
@@ -73,5 +75,45 @@
         white-space: pre-line;
         font-size: 14px;
         color: #6D6C6B;
+    }
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .contact-hd {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .contact {
+        .row-title {
+            margin: 20px 0;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .office-bd {
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .office-title {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    }
+
+    .contact-us {
+        .row {
+            .title {
+                color: #94673D;
+                margin-bottom: 10px;
+            }
+
+            .description {
+                margin-bottom: 30px;
+            }
+        }
     }
 }

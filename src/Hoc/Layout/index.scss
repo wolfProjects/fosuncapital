@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .page {
     &-bd {
         display: flex;
@@ -29,3 +31,14 @@
     }
 }
 
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .page-bd {
+        display: block;
+        padding-top: 52px + 20;
+    }
+
+    .submenu {
+        display: none;
+    }
+}

@@ -42,7 +42,7 @@ const Page = () => {
                         <div className="member-detail-dialog">
                             <div className="member-detail-dialog-mask" onClick={() => updateCurrentMember(null)}></div>
                             <div className="member-detail">
-                                <div className="member-detail-dialog-close" onClick={() => updateCurrentMember(null)}>关闭按钮，需要补图</div>
+                                <div className="member-detail-dialog-close" onClick={() => updateCurrentMember(null)}></div>
                                 <div className="member-detail-summary">
                                     <img className="member-detail-avatar" src={currentMember.attributes.avatar.data.attributes.url} />
                                     <div className="member-detail-name">{currentMember.attributes.name}</div>

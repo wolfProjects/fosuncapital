@@ -28,9 +28,11 @@ const Page = (props) => {
                     {
                         currentSelectedTab && (
                             <div className="tabs-bd">
+                                <small className="tab-title">{ currentSelectedTab.attributes.tabTitle }</small>
                                 <h2 className="tabs-bd-title">{ currentSelectedTab.attributes.title }</h2>
                                 <p className="tabs-bd-content">{ currentSelectedTab.attributes.content }</p>
                                 { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more" to={`/${currentSelectedTab.attributes.pagePath}`}>{ uiText.more }</Link> }
+                                { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more-mobile" to={`/${currentSelectedTab.attributes.pagePath}`}></Link> }
                             </div>
                         )
                     }

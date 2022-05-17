@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .honor-list {
     display: flex;
     flex-wrap: wrap;
@@ -97,6 +99,57 @@
             height: 6px;
             background: #94673D;
             border-radius: 100%;
+        }
+    }
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .honor-list {
+        display: block;
+    }
+
+    .honor-list-item {
+        padding-bottom: 20px;
+    }
+
+    .honor-list-item:not(:last-child) {
+        border-left: 1px solid #E2E2E2;
+    }
+
+    .honor {
+        margin-left: 20px!important;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+
+    .honor-index {
+        width: 30px;
+        height: 20px;
+
+        &-point {
+            left: 3px;
+            top: 3px;
+            right: initial!important;
+            bottom: initial!important;
+        }
+    }
+
+    .honor-list-item:nth-child(even),
+    .honor-list-item:nth-child(odd) {
+        .honor {
+            &-index {
+                left: -30px;
+                top: 0;
+                bottom: initial!important;
+                border-radius: 100px 0px 0px 100px;
+
+                &-point {
+                    right: initial;
+                    top: 3px;
+                    left: 3px;
+                }
+            }
         }
     }
 }

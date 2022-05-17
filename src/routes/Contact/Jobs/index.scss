@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .jobs {
     padding: 0 30px;
     background: #fff;
@@ -25,8 +27,11 @@
         }
 
         &-more {
+            padding-right: 10px;
             font-size: 14px;
             color: #94673D;
+            background: url('~@/assets/images/icon-right-big.png') no-repeat right center;
+            background-size: 8px 14px;
         }
     }
 }
@@ -74,8 +79,8 @@
     background: #fff;
 
     &-hd {
-        line-height: 144px;
-        padding-left: 30px;
+        line-height: 1.6em;
+        padding: 40px 40px 40px 30px;
         font-size: 24px;
     }
 
@@ -103,5 +108,58 @@
             color: #94673D;
             font-weight: bold;
         }
+    }
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .jobs {
+        padding: 0 20px;
+    }
+
+    .job-list-item {
+        height: 56px;
+    }
+
+    .job-list-item-title {
+        font-size: 16px;
+    }
+
+    .job-list-item-more {
+        span {
+            display: none;
+        }
+    }
+
+    .job-detail {
+        top: 106px;
+        left: 20px;
+        right: 20px;
+        transform: initial;
+        width: initial;
+
+        .row-title, .row-description {
+            font-size: 14px;
+        }
+    }
+
+    .job-detail-hd {
+        padding-left: 20px;
+
+        h3 {
+            font-weight: normal;
+        }
+    }
+
+    .job-detail-description {
+        overflow-y: auto;
+        max-height: 258px;
+        margin-bottom: 20px;
+    }
+
+    .job-detail-dialog-close {
+        width: 52px;
+        height: 52px;
+        background-size: 17px 17px;
     }
 }

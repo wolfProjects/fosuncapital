@@ -1,3 +1,5 @@
+@import '~@/libs/variables.scss';
+
 .page-article-detail {
     margin: 200px auto 60px auto;
 
@@ -53,5 +55,18 @@
         margin-bottom: 30px;
         font-size: 16px;
         color: #94673D;
+    }
+}
+
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .page-article-detail {
+        margin-top: 53px;
+        margin-bottom: 0;
+
+        .page-bd {
+            padding-top: 40px;
+        }
     }
 }

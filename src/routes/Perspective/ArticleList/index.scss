@@ -1,6 +1,15 @@
+@import '~@/libs/variables.scss';
+
 .article-list {
-    padding: 30px;
-    background: #fff;
+    &-hd {
+        padding: 30px 30px 0 30px;
+        background: #fff;
+    }
+
+    &-bd {
+        padding: 40px 30px;
+        background: #fff;
+    }
 
     &-item {
         display: flex;
@@ -22,11 +31,7 @@
             width: 160px;
             height: 120px;
             background-color: #6D6C6B;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
+            background-size: cover;
         }
 
         &:first-child {
@@ -55,5 +60,44 @@
             font-size: 14px;
             color: #6D6C6B;
         }
+    }
+}
+
+//  responsive
+@media screen and (max-width: $mobileBreaker) {
+    .article-list-hd {
+        padding: 0;
+        margin: 0 -20px 20px -20px;
+    }
+    .article-list-bd {
+        padding: 20px;
+    }
+
+    .article-list-item {
+        flex-direction: column;
+        padding: 30px 0;
+    }
+
+    .article-list-item-main {
+        order: 1;
+    }
+
+    .article-list-item-thumb {
+        margin: 0 0 20px 0;
+        width: 100%;
+        padding-top: 66.7%;
+    }
+
+    .article-list-item-date {
+        line-height: 1em;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .article-list-item-title {
+        margin-bottom: 12px;
+        font-size: 16px;
+        font-weight: normal;
+        color: #17181B;
     }
 }
