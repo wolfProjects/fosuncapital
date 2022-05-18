@@ -1,6 +1,14 @@
 @import '~@/libs/variables.scss';
 
 .submenu {
+    position: relative;
+    z-index: 100;
+
+    &-hd, &-bd, &-bd-mobile {
+        position: relative;
+        z-index: 100;
+    }
+
     &-hd {
         padding-bottom: 20px;
         border-bottom: 2px solid #94673D;
@@ -68,9 +76,24 @@
             border-left: 2px solid #E0E0E0;
         }
     }
+
+    .mask {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: #000;
+        z-index: 10;
+        opacity: 0;
+        animation: maskFadeIn 1s ease forwards;
+    }
 }
 
 .submenu-bd-mobile {
+    position: absolute;
+    left: 0;
+    right: 0;
     display: none;
     background: #fff;
 
@@ -140,12 +163,13 @@
 
 @media screen and (max-width: $mobileBreaker) {
     .submenu {
-        padding: 0;
+        padding: 0 0 53px 0;
     }
 
     .submenu-hd {
-        border-bottom: 1px solid #E2E2E2;
         padding: 16px 20px 20px 20px;
+        background: #fff;
+        border-bottom: 1px solid #E2E2E2;
     }
 
     .submenu-bd {

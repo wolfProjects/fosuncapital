@@ -147,15 +147,6 @@
     }
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 //  responsive
 @media screen and (max-width: $laptopBreaker) {
     .page-team {

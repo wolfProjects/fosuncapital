@@ -49,6 +49,7 @@ const SubMenu = (props) => {
                     }
                 </div>
             </div>
+            { isCollapse && <div className="mask" onClick={() => setCollapse(false)}></div> }
         </div>
     );
 }
