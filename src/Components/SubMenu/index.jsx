@@ -15,6 +15,9 @@ const SubMenu = (props) => {
         props.onCurrentSelectedSubMenuIDChanged && props.onCurrentSelectedSubMenuIDChanged(currentSelectedSubMenuItem, menu.subMenus.find(i => i.id == currentSelectedSubMenuItem));
     }, [currentSelectedSubMenuItem]);
 
+    let [isCollapse, setCollapse] = useState(false);
+    let subMenus = (isCollapse ? menu.subMenus : menu.subMenus.filter(i => i.id == currentSelectedSubMenuItem )) || [menu.subMenus[0]];
+
     return (
         <div className="submenu">
             <div className="submenu-hd">
@@ -29,6 +32,22 @@ const SubMenu = (props) => {
                         </Link>
                     ))
                 }
+            </div>
+            <div className={classNames("submenu-bd-mobile", { active: isCollapse })} onClick={() => setCollapse(!isCollapse)}>
+                <div className="bd">
+                    {
+                        subMenus.map((item, key) => (
+                            <Link 
+                                className={classNames("item", { active: item.id == currentSelectedSubMenuItem })} 
+                                to={`/${menu.pagePath}/${item.id}`} 
+                                key={item.title}
+                                
+                            >
+                                { item.title }
+                            </Link>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     );

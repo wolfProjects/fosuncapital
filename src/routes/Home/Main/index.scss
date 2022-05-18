@@ -1,6 +1,8 @@
 @import '~@/libs/variables.scss';
 
 .page-home {
+    touch-action: pan-x;
+    
     &-main {
         position: fixed;
         top: 0;
@@ -18,17 +20,32 @@
         }
 
         .main {
+            width: 50%;
             flex: 0 0 50%;
+        }
+
+        .swiper-slide {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #fff;
         }
     }
 
     .tabs {
+        max-width: 500px;
         min-height: 500px;
+        padding: 0 20px;
 
         &-hd {
+            overflow: auto;
             display: flex;
 
             &-item {
+                flex: 0 0 auto;
                 line-height: 46px;
                 padding: 0 32px;
                 margin-right: 20px;
@@ -50,7 +67,7 @@
             margin-top: 40px;
 
             &-title {
-                width: 500px;
+                max-width: 500px;
                 line-height: 1.32em;
                 font-size: 50px;
                 margin-bottom: 20px;
@@ -59,7 +76,7 @@
             }
 
             &-content {
-                width: 500px;
+                max-width: 500px;
                 margin-bottom: 84px;
                 line-height: 1.625;
                 font-size: 16px;
@@ -88,12 +105,17 @@
                 }
             }
         }
+
+        .tab-title {
+            display: none;
+        }
     }
 
     .pagination {
         position: fixed;
         bottom: 120px;
         left: 50%;
+        z-index: 100;
         transform: translate(-50%, 0);
         display: flex;
 
@@ -133,8 +155,7 @@
         }
 
         .main {
-            padding-top: 106%;
-            background-color: #585858;
+            width: 100%;
         }
 
         .side {

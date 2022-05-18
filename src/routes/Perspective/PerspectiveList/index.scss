@@ -2,21 +2,85 @@
 
 .perspective {
     &-list {
+        position: relative;
         max-width: 1090px;
         
         &-item {
             display: block;
             width: 340px;
-            background: #fff;
             cursor: pointer;
             user-select: none;
             border: 1px solid transparent;
             transition: border-color .65s ease-out;
+            background: #fff;
 
             &:hover {
                 border-color: #94673D;
             }
-        }   
+        }
+        
+        .swiper {
+            padding-bottom: 74px;
+        }
+
+        .swiper-pagination-progressbar {
+            top: auto;
+            right: 74px;
+            bottom: 20px;
+            left: 74px;
+            width: auto;
+            height: 3px;
+            background: #E2E2E2;
+        }
+
+        .swiper-pagination-progressbar-fill {
+            background: #94673D;
+        }
+        
+        .swiper-slide {
+            width: 340px;
+        }
+
+        .swiper-button-prev {
+            top: initial;
+            bottom: 0;
+            width: 54px;
+            height: 54px;
+            background: #94673D url('~@/assets/images/icon-left-normal.png') no-repeat center center;
+            background-size: 10px 16px;
+            border-radius: 54px;
+
+            &::after {
+                content: '';
+            }
+        }
+
+        .swiper-button-next {
+            top: initial;
+            bottom: 0;
+            width: 54px;
+            height: 54px;
+            background: #94673D url('~@/assets/images/icon-right-small-active.png') no-repeat center center;
+            background-size: 10px 16px;
+            border-radius: 54px;
+
+            &::after {
+                content: '';
+            }
+        }
+
+        .swiper-button-disabled.swiper-button-prev {
+            background-image: url('~@/assets/images/icon-left-big.png');
+        }
+        
+        .swiper-button-disabled.swiper-button-next {
+            background-image: url('~@/assets/images/icon-right-big.png');
+        }
+
+        .swiper-button-disabled {
+            background-color: #fff;
+            opacity: .75;
+        }
     }
 
     &-hd {
@@ -83,21 +147,12 @@
     }
 }
 
-.swiper {
-    width: 100%;
-    height: 100%;
-}
-  
-.swiper-slide {
-    width: 340px;
-}
-
 .mobile-only {
     display: none;
 }
 
 //  responsive
-@media screen and (max-width: $mobileBreaker) {
+@media screen and (max-width: $laptopBreaker) {
     .not-mobile {
         display: none;
     }
@@ -106,6 +161,29 @@
         display: block;
     }
 
+    .perspective-list {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: initial;
+    }
+
+    .perspective-list-item {
+        width: calc(25% - 20px);
+        margin: 0 10px 20px 10px;
+    }
+
+    .perspective-title {
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: $tableBreaker) {
+    .perspective-list-item {
+        width: calc(33.3333% - 20px);
+    }
+}
+
+@media screen and (max-width: $mobileBreaker) {
     .perspective-list-item {
         width: 100%;
         margin-bottom: 20px;

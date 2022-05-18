@@ -18,3 +18,15 @@ a {
   text-decoration: none;
   color: #17181B;
 }
+
+//  hide scrollbar
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+//  swiper
+.swiper {
+  width: 100%;
+  height: 100%;
+}

@@ -4,8 +4,8 @@
     &-bd {
         display: flex;
         justify-content: space-between;
-        max-width: 1460px;
-        padding: 200px 20px 0 20px;
+        max-width: $laptopBreaker;
+        padding: 200px 0 60px 0;
         margin: 0 auto;
     }
 
@@ -17,6 +17,7 @@
 
     &-main {
         flex: 1 1 auto;
+        padding: 0 20px;
     }
 
     .fade-in {
@@ -32,13 +33,24 @@
 }
 
 //  responsive
+@media screen and (max-width: $laptopBreaker) {
+    .page-bd {
+        flex-direction: column;
+        padding-top: 120px;
+    }
+    
+    .page-aside {
+        width: 100%;
+        margin-bottom: 30px;
+        border-top: 1px solid #E2E2E2;
+        border-bottom: 1px solid #E2E2E2;
+    }
+}
+
 @media screen and (max-width: $mobileBreaker) {
     .page-bd {
         display: block;
-        padding-top: 52px + 20;
-    }
-
-    .submenu {
-        display: none;
+        padding-top: 52px;
+        padding-bottom: 40px;
     }
 }

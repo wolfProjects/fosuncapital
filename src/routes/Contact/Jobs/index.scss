@@ -112,6 +112,15 @@
 }
 
 //  responsive
+@media screen and (max-width: $tableBreaker) {
+    .job-detail {
+        left: 40px;
+        right: 40px;
+        width: initial;
+        transform: translate(0, -50%);
+    }
+}
+
 @media screen and (max-width: $mobileBreaker) {
     .jobs {
         padding: 0 20px;

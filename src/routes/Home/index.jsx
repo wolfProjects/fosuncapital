@@ -4,11 +4,12 @@ import Layout from "@/Hoc/Layout";
 import Main from './Main';
 import services from '@/services';
 import uiData from '@/Data/i18n';
+import tools from '@/libs/tools';
 
 const Page = (props) => {
     let { welcome } = uiData.getUiI18n().home;
 
-    let [ showHomePage, updateShowHomePage ] = useState(true);
+    let [ showHomePage, updateShowHomePage ] = useState(false);
 
     useEffect(() => props.updateHeaderStyle(1), []);
     
@@ -28,8 +29,8 @@ const Page = (props) => {
         <React.Fragment>
             {
                 !showHomePage ? 
-                    <HomeWelcome title={welcome.title} content={welcome.content} whenWheeled={whenWheeled} /> :
-                    <Main tabs={tabs}/>
+                    <HomeWelcome title={welcome.title} content={welcome.content} whenWheeled={whenWheeled} background={welcome.pcImg} /> :
+                    <Main tabs={tabs} />
             }
         </React.Fragment>
     )
@@ -38,13 +39,20 @@ const Page = (props) => {
 const HomeWelcome = (props) => {
     useEffect(() => {
         let whenWheeling = () => props.whenWheeled && props.whenWheeled();
-        document.body.addEventListener('wheel', whenWheeling, { once : true });
+        tools.isTouchDevice() ? 
+            document.body.addEventListener('touchmove', whenWheeling, { once: true }) :
+            document.body.addEventListener('wheel', whenWheeling, { once : true });
 
-        return () => document.body.removeEventListener('wheel', whenWheeling);
+
+        return (() => {
+            tools.isTouchDevice() ? 
+                document.body.removeEventListener('touchmove', whenWheeling) :
+                document.body.removeEventListener('wheel', whenWheeling);
+        });
     }, []);
 
     return (
-        <div className="home-welcome">
+        <div className="home-welcome" style={{ backgroundImage: `url('${props.background}')`}}>
             <div className="home-welcome-bd">
                 <h1 className="title">{props.title}</h1>
                 <p className="content">{props.content}</p>

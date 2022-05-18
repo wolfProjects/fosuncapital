@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10000;
+    z-index: 1000;
     background: #fff;
     user-select: none;
 
@@ -192,6 +192,7 @@
         height: 60px;
         background: url('~@/assets/images/header-language-status-2.png') no-repeat;
         background-position: center center;
+        background-size: 30px 30px;
         cursor: pointer;
 
         &:hover::before {
@@ -207,6 +208,8 @@
             height: 16px;
             margin-left: 25px;
             background: url('~@/assets/images/header-language-arrow-status-2.png') no-repeat;
+            background-size: contain;
+            transform-origin: 8px 5px;
             transition: all .25s .1s ease;
         }
     }
@@ -335,7 +338,6 @@
             width: 12px;
             height: 8px;
             margin-left: 19px;
-            background-size: cover;
         }
     }
 

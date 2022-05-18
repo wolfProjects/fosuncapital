@@ -9,6 +9,7 @@ const team = (server) => {
 const fetchTab = (axios) => subMenuID => {
     return axios.get('home-tabs', {
         params: {
+            populate: [ 'mobileBackground', 'pcBackground' ],
         },
         paramsSerializer: params => qs.stringify(params, {
             encodeValuesOnly: true,

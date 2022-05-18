@@ -35,8 +35,13 @@ const showDate = formatDateI18nFactory(
     ({ 'zh-Hans': 'yyyy年MM月dd日' })[getCurrentLocale()] || 'yyyy/MM/dd'
 );
 
+const isTouchDevice = () =>(('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) ||
+    (navigator.msMaxTouchPoints > 0));
+
 export default {
     openNewPage,
     showDate,
-    getCurrentLocale
+    getCurrentLocale,
+    isTouchDevice
 };

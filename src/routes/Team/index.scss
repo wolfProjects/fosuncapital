@@ -7,8 +7,8 @@
 
         &-item {
             position: relative;
-            flex: 0 0 33.33333%;
-            padding: 0 10px 20px 10px;
+            flex: 0 0 calc(33.33333% - 20px);
+            margin: 0 10px 20px 10px;
             cursor: pointer;
         }
 
@@ -27,9 +27,9 @@
         &-item-bd {
             opacity: 0;
             position: absolute;
-            bottom: 20px;
-            left: 10px;
-            right: 10px;
+            bottom: 0;
+            left: 0;
+            right: 0;
             padding: 20px;
             min-height: 152px;
             background-color: rgba(255,255,255,.9);
@@ -157,14 +157,34 @@
 }
 
 //  responsive
+@media screen and (max-width: $laptopBreaker) {
+    .page-team {
+        .member-list-item {
+            flex: 0 0 calc(25% - 15px);
+            margin: 0 7.5px 15px 7.5px;
+        }
+    }
+}
+
+@media screen and (max-width: $tableBreaker) {
+    .page-team {
+        .member-list-item {
+            flex: 0 0 calc(33.333% - 15px);
+        }
+
+        .member-detail {
+            width: inherit;
+            left: 40px;
+            right: 40px;
+            transform: translate(0, -50%);
+        }
+    }
+}
+
 @media screen and (max-width: $mobileBreaker) {
     .page-team {
-        .member-list {
-            margin: 0 -7.5px;
-        }
         .member-list-item {
-            flex: 0 0 50%;
-            padding: 0 7.5px 15px 7.5px;
+            flex: 0 0 calc(50% - 15px);
         }
 
         .member-list-item-bd {
@@ -172,13 +192,14 @@
         }
 
         .member-detail {
-            top: 54px;
-            bottom: 54px;
+            top: 106px;
+            bottom: initial;
             left: 20px;
             right: 20px;
             transform: initial;
             display: block;
             width: initial;
+            padding-bottom: 20px;
             background: #F4F4F4;
         }
 
@@ -207,6 +228,8 @@
 
         .member-detail-details {
             padding: 20px;
+            max-height: 290px;
+            overflow-y: auto;
         }
 
         .member-detail-dialog-close {
