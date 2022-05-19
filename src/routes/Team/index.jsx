@@ -3,6 +3,7 @@ import './index.scss';
 import Layout from "@/Hoc/Layout";
 import SubMenu from '@/Components/SubMenu';
 import services from '@/services';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Page = () => {
     let [ memberList, updateMemberList ] = useState({});
@@ -37,22 +38,24 @@ const Page = () => {
                 }
                 </div>
 
-                {
-                    currentMember && (
-                        <div className="member-detail-dialog">
-                            <div className="member-detail-dialog-mask" onClick={() => updateCurrentMember(null)}></div>
-                            <div className="member-detail">
-                                <div className="member-detail-dialog-close" onClick={() => updateCurrentMember(null)}></div>
-                                <div className="member-detail-summary">
-                                    <img className="member-detail-avatar" src={currentMember.attributes.avatar.data.attributes.url} />
-                                    <div className="member-detail-name">{currentMember.attributes.name}</div>
-                                    <div className="member-detail-titles">{currentMember.attributes.title}</div>
+                <AnimatePresence>
+                    {
+                        currentMember && (
+                            <motion.div className="member-detail-dialog" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .35 }}>
+                                <div className="member-detail-dialog-mask" onClick={() => updateCurrentMember(null)}></div>
+                                <div className="member-detail">
+                                    <div className="member-detail-dialog-close" onClick={() => updateCurrentMember(null)}></div>
+                                    <div className="member-detail-summary">
+                                        <img className="member-detail-avatar" src={currentMember.attributes.avatar.data.attributes.url} />
+                                        <div className="member-detail-name">{currentMember.attributes.name}</div>
+                                        <div className="member-detail-titles">{currentMember.attributes.title}</div>
+                                    </div>
+                                    <div className="member-detail-details">{currentMember.attributes.description}</div>
                                 </div>
-                                <div className="member-detail-details">{currentMember.attributes.description}</div>
-                            </div>
-                        </div>
-                    )
-                }
+                            </motion.div>
+                        )
+                    }
+                </AnimatePresence>
             </main>
         </React.Fragment>
     );

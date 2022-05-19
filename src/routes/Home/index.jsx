@@ -14,7 +14,10 @@ const Page = (props) => {
 
     let [ showHomePage, updateShowHomePage ] = useState(false);
 
-    useEffect(() => props.updateHeaderStyle(1), []);
+    useEffect(() => {
+        props.updateHeaderStyle(1);
+        return () => props.updateHeaderStyle(null);
+    }, []);
     
     const whenWheeled = useCallback(() => {
         props.updateHeaderStyle(2);

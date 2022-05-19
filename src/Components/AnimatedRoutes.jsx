@@ -9,24 +9,24 @@ import Contact from '@/routes/Contact';
 import ArticleDetail from '@/routes/ArticleDetail';
 import { AnimatePresence } from 'framer-motion';
 
-function AnimatedRoutes () {
+function AnimatedRoutes (props) {
     const location = useLocation();
 
     return (
         <AnimatePresence>
             <Routes location={location} key={location.pathname}>
-                <Route exact path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/about/:id" element={<About />} />
-                <Route path="/team" element={<Team />} />
-                <Route path="/team/:id" element={<Team />} />
-                <Route path="/perspective" element={<Perspective />} />
-                <Route path="/perspective/:id" element={<Perspective />} />
-                <Route path="/firm" element={<Firm />} />
-                <Route path="/firm/:id" element={<Firm />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/contact/:id" element={<Contact />} />
-                <Route path="/article-detail/:id" element={<ArticleDetail />} />
+                <Route exact path="/" element={<Home updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/about" element={<About updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/about/:id" element={<About updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/team" element={<Team updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/team/:id" element={<Team updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/perspective" element={<Perspective updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/perspective/:id" element={<Perspective updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/firm" element={<Firm updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/firm/:id" element={<Firm updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/contact" element={<Contact updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/contact/:id" element={<Contact updateHeaderStyle={props.updateHeaderStyle} />} />
+                <Route path="/article-detail/:id" element={<ArticleDetail updateHeaderStyle={props.updateHeaderStyle} />} />
             </Routes>
         </AnimatePresence>
     );

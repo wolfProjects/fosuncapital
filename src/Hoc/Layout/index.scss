@@ -19,17 +19,6 @@
         flex: 1 1 auto;
         padding: 0 20px;
     }
-
-    .fade-in {
-        opacity: 0;
-        animation: pageFadeIn .65s ease forwards;
-    }
-}
-
-@keyframes pageFadeIn {
-    100% {
-        opacity: 1;
-    }
 }
 
 //  responsive

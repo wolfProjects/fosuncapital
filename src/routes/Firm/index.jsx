@@ -4,6 +4,7 @@ import Layout from "@/Hoc/Layout";
 import SubMenu from '@/Components/SubMenu';
 import services from '@/services';
 import tools from '@/libs/tools';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const Page = () => {
     let [ firmList, updateFirmList ] = useState({});
@@ -51,27 +52,29 @@ const Page = () => {
                 }
                 </div>
 
-                { currentFirm && (
-                    <div className="firm-info-dialog">
-                        <div className="firm-info-dialog-mask" onClick={_ => updateCurrentFirm(null)}></div>
-                        <div className="firm-info-dialog-bd">
-                            <span className="firm-info-dialog-close" onClick={() => updateCurrentFirm(null)}></span>
-                            <div className="firm-info-dialog-meta">
-                                <h3 className="firm-info-dialog-name">{currentFirm.attributes.name}</h3>
-                                <div className="firm-info-dialog-description">{currentFirm.attributes.description}</div>
+                <AnimatePresence>
+                    { currentFirm && (
+                        <motion.div className="firm-info-dialog" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: .35 }}>
+                            <div className="firm-info-dialog-mask" onClick={_ => updateCurrentFirm(null)}></div>
+                            <div className="firm-info-dialog-bd">
+                                <span className="firm-info-dialog-close" onClick={() => updateCurrentFirm(null)}></span>
+                                <div className="firm-info-dialog-meta">
+                                    <h3 className="firm-info-dialog-name">{currentFirm.attributes.name}</h3>
+                                    <div className="firm-info-dialog-description">{currentFirm.attributes.description}</div>
+                                </div>
+                                {
+                                    currentFirm.attributes.website && (
+                                        <div className="firm-info-dialog-link">
+                                            <p>官网</p>
+                                            <p className="link">{currentFirm.attributes.website}</p>
+                                            <small className="go" onClick={(e) => { e.stopPropagation(); tools.openNewPage(currentFirm.attributes.website) } }></small>
+                                        </div>
+                                    )
+                                }
                             </div>
-                            {
-                                currentFirm.attributes.website && (
-                                    <div className="firm-info-dialog-link">
-                                        <p>官网</p>
-                                        <p className="link">{currentFirm.attributes.website}</p>
-                                        <small className="go" onClick={(e) => { e.stopPropagation(); tools.openNewPage(currentFirm.attributes.website) } }></small>
-                                    </div>
-                                )
-                            }
-                        </div>
-                    </div>
-                ) }
+                        </motion.div>
+                    ) }
+                </AnimatePresence>
             </main>
         </React.Fragment>
     );

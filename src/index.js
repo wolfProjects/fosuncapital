@@ -4,8 +4,10 @@ import Routes from './routes';
 import { QueryProvider } from '@tevhooks/use-media-query'
 import 'normalize.css';
 import './index.scss';
+import 'swiper/css';
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { init } from '@/Data';
-
 
 //  media query break points
 const breakpoints = {

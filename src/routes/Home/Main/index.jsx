@@ -8,6 +8,8 @@ import 'swiper/css';
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
 import uiData from '@/Data/i18n';
+import useFramerEmotionConfig from '@/libs/useFramerEmotionConfig';
+import { motion } from 'framer-motion';
 
 const Page = (props) => {
     let { tabs } = props;
@@ -39,56 +41,81 @@ const Page = (props) => {
         setCurrentIndex(newIndex);
     }
 
+    //  framer animation
+    let framerSide = useFramerEmotionConfig({ 
+        mobile: { 
+            exit: { opacity: 0 },
+            transition: { duration: 1.6 } 
+        }, 
+        laptop: {
+            exit: { opacity: 0, x: '-100%' },
+            transition: { duration: 1.6, delay: .8 } 
+        }
+    });
+
+    let framerMain = useFramerEmotionConfig({ 
+        mobile: { 
+            exit: { opacity: 0 },
+            transition: { duration: 1.6 } 
+        }, 
+        laptop: {
+            exit: { opacity: 0, x: '100%' },
+            transition: { duration: 1.6, delay: .8 } 
+        }
+    });
+
     return (
-        <div className="page-home-main">
-            <div className="side">
-                <div className="tabs">
-                    <div className="tabs-hd">
+        framerSide && framerMain && (
+            <motion.div className="page-home-main">
+                <div className="side" exit={framerSide.exit} transition={framerSide.transition}>
+                    <div className="tabs">
+                        <div className="tabs-hd">
+                            {
+                                tabs.map((tab, index) => (
+                                    <button className={classNames("tabs-hd-item", { active: currentIndex == index })} key={ index } onClick={() => setCurrentIndex(index)} data-id={index}>
+                                        { tab.attributes.tabTitle }
+                                    </button>
+                                ))
+                            }
+                        </div>
                         {
-                            tabs.map((tab, index) => (
-                                <button className={classNames("tabs-hd-item", { active: currentIndex == index })} key={ index } onClick={() => setCurrentIndex(index)} data-id={index}>
-                                    { tab.attributes.tabTitle }
-                                </button>
-                            ))
+                            currentSelectedTab && (
+                                <div className="tabs-bd">
+                                    <small className="tab-title">{ currentSelectedTab.attributes.tabTitle }</small>
+                                    <h2 className="tabs-bd-title">{ currentSelectedTab.attributes.title }</h2>
+                                    <p className="tabs-bd-content">{ currentSelectedTab.attributes.content }</p>
+                                    { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more" to={`/${currentSelectedTab.attributes.pagePath}`}>{ more }</Link> }
+                                    { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more-mobile" to={`/${currentSelectedTab.attributes.pagePath}`}></Link> }
+                                </div>
+                            )
                         }
                     </div>
-                    {
-                        currentSelectedTab && (
-                            <div className="tabs-bd">
-                                <small className="tab-title">{ currentSelectedTab.attributes.tabTitle }</small>
-                                <h2 className="tabs-bd-title">{ currentSelectedTab.attributes.title }</h2>
-                                <p className="tabs-bd-content">{ currentSelectedTab.attributes.content }</p>
-                                { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more" to={`/${currentSelectedTab.attributes.pagePath}`}>{ more }</Link> }
-                                { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more-mobile" to={`/${currentSelectedTab.attributes.pagePath}`}></Link> }
-                            </div>
-                        )
+                </div>
+                <div className="main" exit={framerMain.exit} transition={framerMain.transition}>
+                    { tabs && 
+                        <Swiper
+                            onSwiper={setSwiperRef}
+                            effect={"fade"}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            modules={[EffectFade, Pagination]}
+                            onSlideChange={handleSwiperChange}
+                        >
+                            {
+                                tabs.map((tab, index) => (
+                                    <SwiperSlide style={{ backgroundImage: `url('${tab.attributes.pcBackground.data.attributes.url}')`}} key={index} />
+                                ))
+                            }
+                        </Swiper>
                     }
                 </div>
-            </div>
-            <div className="main">
-                { tabs && 
-                    <Swiper
-                        onSwiper={setSwiperRef}
-                        effect={"fade"}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[EffectFade, Pagination]}
-                        onSlideChange={handleSwiperChange}
-                    >
-                        {
-                            tabs.map((tab, index) => (
-                                <SwiperSlide style={{ backgroundImage: `url('${tab.attributes.pcBackground.data.attributes.url}')`}} key={index} />
-                            ))
-                        }
-                    </Swiper>
-                }
-            </div>
-            <div className="pagination">
-                <button className="pagination-item pre" onClick={() => handleTabPagination(-1)} />
-                <button className="pagination-item next" onClick={() => handleTabPagination(1)} />
-            </div>
-        </div>
+                <div className="pagination">
+                    <button className="pagination-item pre" onClick={() => handleTabPagination(-1)} />
+                    <button className="pagination-item next" onClick={() => handleTabPagination(1)} />
+                </div>
+            </motion.div>
+        )
     );
 };
 

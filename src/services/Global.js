@@ -12,7 +12,7 @@ const fetchNav = (axios) => _ => {
         params: {
             populate: [ 
                 'subMenus', 
-                'subMenus.banner' 
+                'subMenus.banner'
             ],
             fields: [
                 'title',

@@ -1,20 +1,16 @@
-import React, { useState } from 'react';
-import Header from '@/Components/Header';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
+import { motion } from 'framer-motion';
 
 export default config => WrappedComponents => (props) => {
     let style = classNames(`page page-${config.name}`);
-    let [ headerStyle, updateHeaderStyle ] = useState(undefined);
 
     return (
-        <div className={style}>
-            <div className="page-hd">
-                <Header headerStyle={headerStyle} />
-            </div>
-            <div className="page-bd">
-                <WrappedComponents {...props} updateHeaderStyle={updateHeaderStyle} />
-            </div>
+        <div className={style} exit={{ x: '100%', transition: { duration: 2 }}}>
+            <motion.div className="page-bd">
+                <WrappedComponents {...props} updateHeaderStyle={props.updateHeaderStyle} />
+            </motion.div>
         </div>
     );
 };

@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import AnimatedRoutes from '@/Components/AnimatedRoutes';
+import Header from '@/Components/Header';
 
-const App = () => {
+const Routers = () => {
+    let [ headerStyle, updateHeaderStyle ] = useState(undefined);
+
     return (
         <Router>
-            <AnimatedRoutes />
+            <Header headerStyle={headerStyle} />
+            <AnimatedRoutes updateHeaderStyle={updateHeaderStyle} />
         </Router>
     );
 };
 
-export default App;
+export default Routers;

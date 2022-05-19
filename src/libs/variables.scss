@@ -1,22 +1,3 @@
 $mobileBreaker: 428px;
 $tableBreaker: 1024px;
 $laptopBreaker: 1480px;
-
-//  animations
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes maskFadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: .5;
-    }
-}
