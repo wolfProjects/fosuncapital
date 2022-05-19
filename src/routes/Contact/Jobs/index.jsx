@@ -4,7 +4,7 @@ import uiData from '@/Data/i18n';
 
 const Jobs = (props={}) => {
     let [ currentJob, updateCurrentJob ] = useState(null);
-    let { email } = uiData.getUiI18n().contact.jobs;
+    let { email, details } = uiData.getUiI18n().contact.jobs;
 
     return (
         <div className="jobs">
@@ -12,7 +12,7 @@ const Jobs = (props={}) => {
                 props.list.map((job, index) => (
                     <div className="job-list-item" key={index} onClick={() => updateCurrentJob(job)}>
                         <div className="job-list-item-title">{job.attributes.title}</div>
-                        <div className="job-list-item-more"><span>{props.uiText.details}</span>&nbsp;</div>
+                        <div className="job-list-item-more"><span>{details}</span>&nbsp;</div>
                     </div>
                 ))
             }

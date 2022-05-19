@@ -5,6 +5,9 @@ import Main from './Main';
 import services from '@/services';
 import uiData from '@/Data/i18n';
 import tools from '@/libs/tools';
+import useFramerEmotionConfig from '@/libs/useFramerEmotionConfig';
+import { AnimatePresence, motion } from 'framer-motion';
+import useMediaQuery from '@tevhooks/use-media-query';
 
 const Page = (props) => {
     let { welcome } = uiData.getUiI18n().home;
@@ -25,15 +28,17 @@ const Page = (props) => {
         });
     }, []);
 
+    let background = useMediaQuery(query => query.down('mobile')) ? welcome.mobileImg : welcome.pcImg;
+
     return (    
-        <React.Fragment>
-            {
-                !showHomePage ? 
-                    <HomeWelcome title={welcome.title} content={welcome.content} whenWheeled={whenWheeled} background={welcome.pcImg} /> :
-                    <Main tabs={tabs} />
-            }
-        </React.Fragment>
-    )
+        <AnimatePresence>
+        {
+            !showHomePage ? 
+                <HomeWelcome key={1} title={welcome.title} content={welcome.content} whenWheeled={whenWheeled} background={background} /> :
+                <Main key={2} tabs={tabs} />
+        }
+        </AnimatePresence>
+    );
 };
 
 const HomeWelcome = (props) => {
@@ -51,15 +56,40 @@ const HomeWelcome = (props) => {
         });
     }, []);
 
+    //  framer animation
+    let framer = useFramerEmotionConfig({ 
+        mobile: { 
+            initial: { y: 3, opacity: 0 }, 
+            animate: { y: 0, opacity: 1 }, 
+            exit: { opacity: 0 },
+            transition: { duration: 1.6, delay: .8 } 
+        }, 
+        laptop: {
+            initial: { y: 20, opacity: 0 }, 
+            animate: { y: 0, opacity: 1 }, 
+            exit: { opacity: 0 },
+            transition: { duration: 1.6, delay: .8 } 
+        }
+    });
+
     return (
-        <div className="home-welcome" style={{ backgroundImage: `url('${props.background}')`}}>
-            <div className="home-welcome-bd">
-                <h1 className="title">{props.title}</h1>
-                <p className="content">{props.content}</p>
-            </div>
+        <motion.div 
+            className="home-welcome" 
+            style={{ backgroundImage: `url('${props.background}')`}} 
+            initial={{ opacity: 0 }} 
+            exit={{ opacity: 0, transition: { duration: .75 } }} animate={{ opacity: 1 }} transition={{ duration: 2.5 }}
+        >
+            {
+                framer && (
+                    <div className="home-welcome-bd">
+                        <motion.h1 className="title" initial={framer.initial} animate={framer.animate} exit={framer.exit} transition={framer.transition}>{props.title}</motion.h1>
+                        <motion.p className="content" initial={framer.initial} animate={framer.animate} exit={framer.exit} transition={{ duration: 1.6, delay: 1.2 }}>{props.content}</motion.p>
+                    </div>
+                )
+            }
 
             <span className="home-welcome-scroll-tips"></span>
-        </div>
+        </motion.div>
     );
 };
 

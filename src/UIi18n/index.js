@@ -4,8 +4,11 @@ const json = {
             "welcome": {
                 "title": "汇聚成长力量",
                 "content": "复星创富自2007年成立至今,\n十五年来发起并管理的资产包括母基金、私募股权投资基金、上市公司产业基金及其它各类股权投资基金",
-                "pcImg": "http://qncdn.mercurymage.com/chuangfu-dev/home_Welcome_20933a7a84.jpeg?updated_at=2022-05-18T10:24:21.764Z",
+                "pcImg": "http://qncdn.mercurymage.com/chuangfu-dev/home_Welcome_ad2d0b468b.jpg?updated_at=2022-05-18T12:18:07.919Z",
                 "mobileImg": "http://qncdn.mercurymage.com/chuangfu-dev/home_Welcome_Phone_10553bf535.jpeg?updated_at=2022-05-18T10:29:05.745Z"
+            },
+            "main": {
+                "more": "了解更多"
             }
         },
         "chuangfu": {
@@ -162,6 +165,7 @@ const json = {
                 "tele": "021-3241 4511"
             },
             "jobs": {
+                "details": "职位详情",
                 "email": "投递邮箱"
             }
         }

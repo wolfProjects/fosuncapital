@@ -6,13 +6,8 @@ import Contact from './Contact';
 import Jobs from './Jobs';
 import services from '@/services';
 
-const uiText = {
-    details: '职位详情'
-};
-
 const Page = () => {
     let [ UITemplate, updateUITemplate ] = useState(null);
-    let [ jobList, updateJobList ] = useState(null);
 
     let setUpPage = useCallback(async (_, currentSubMenu) => {
         if (currentSubMenu.isStaticPage) {
@@ -21,8 +16,7 @@ const Page = () => {
         else {
             //  request api
             let list = await services.Contact.fetchJobList();
-            updateUITemplate(<Jobs list={list.data.data} uiText={uiText}/>);
-            updateJobList(list.data.data);
+            updateUITemplate(<Jobs list={list.data.data} />);
         }
     }, []);
 

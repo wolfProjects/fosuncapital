@@ -7,16 +7,14 @@ import { EffectFade, Pagination } from "swiper";
 import 'swiper/css';
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
-
-const uiText = {
-    more: '了解更多'
-}
+import uiData from '@/Data/i18n';
 
 const Page = (props) => {
     let { tabs } = props;
     let [ currentIndex, setCurrentIndex ] = useState(0);
     let currentSelectedTab = tabs[currentIndex] || tabs[0];
-
+    let { more } = uiData.getUiI18n().home.main;
+    
     //  focus tab button
     useEffect(
         () => {
@@ -60,7 +58,7 @@ const Page = (props) => {
                                 <small className="tab-title">{ currentSelectedTab.attributes.tabTitle }</small>
                                 <h2 className="tabs-bd-title">{ currentSelectedTab.attributes.title }</h2>
                                 <p className="tabs-bd-content">{ currentSelectedTab.attributes.content }</p>
-                                { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more" to={`/${currentSelectedTab.attributes.pagePath}`}>{ uiText.more }</Link> }
+                                { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more" to={`/${currentSelectedTab.attributes.pagePath}`}>{ more }</Link> }
                                 { currentSelectedTab.attributes.pagePath && <Link className="tabs-bd-more-mobile" to={`/${currentSelectedTab.attributes.pagePath}`}></Link> }
                             </div>
                         )
